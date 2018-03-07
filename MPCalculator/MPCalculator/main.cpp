@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include <Windows.h>
 #include <vector>
 
 using namespace std;
@@ -23,19 +24,29 @@ using namespace std;
 //#define P 607
 
 // Function declarations
-void squareVector(vector<int> srcVector, vector<int> &tgtVector);
-void carryVector(vector<int> &tgtVector);
-void subTwoVector(vector<int> &tgtVector);
-void modVector(vector<int> srcVector, vector<int> &tgtVector);
-void printVector(vector<int> tgtVector);
+void	squareVector(vector<int> srcVector, vector<int> &tgtVector);
+void	carryVector(vector<int> &tgtVector);
+void	subTwoVector(vector<int> &tgtVector);
+void	modVector(vector<int> srcVector, vector<int> &tgtVector);
+void	printVector(vector<int> tgtVector);
 
 // Variables
 vector<int> vectorA(P * 2, 0);
 vector<int> vectorB(P * 4, 0);
 
+double			elapsedTime;
+LARGE_INTEGER	timerFrequency;
+LARGE_INTEGER	timerStart, timerFinish;
+
 void main(void) {
 	// Set vectorA to a binary number to square
 	vectorA.at(2) = 1;
+
+	// Get how many ticks per second this system produces
+	QueryPerformanceFrequency(&timerFrequency);
+
+	// Start timer and begin calculations
+	QueryPerformanceCounter(&timerStart);
 
 	for (int k = 0; k < P - 2; k++) {
 		cout << "P = " << P << " | Iteration = " << k + 1 << endl;
@@ -67,7 +78,13 @@ void main(void) {
 
 	}
 
-	// Pause
+	// Log finish time, calculate total elapsed time and print result
+	QueryPerformanceCounter(&timerFinish);
+	elapsedTime = (timerFinish.QuadPart - timerStart.QuadPart) * 1000.0 / timerFrequency.QuadPart;
+
+	cout << "Elapsed time: " << elapsedTime << "ms";
+
+	// Pause until keypress
 	_getch();
 }
 
@@ -136,7 +153,7 @@ void subTwoVector(vector<int> &tgtVector) {
 void modVector(vector<int> srcVector, vector<int> &tgtVector) {
 	int count = 0;
 
-	// Clear the tgtVector
+	// Clear tgtVector
 	for (int i = 0; i < tgtVector.size(); i++) tgtVector.at(i) = 0;
 
 	// Copy P digits from srcVector to tgtVector
