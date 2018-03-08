@@ -116,12 +116,12 @@ void carryVector(vector<int> &tgtVector) {
 		if (tgtVector.at(i) > 511) {	tgtVector.at(i) -= 512;		tgtVector.at(i + 9)++; }
 		if (tgtVector.at(i) > 255) {	tgtVector.at(i) -= 256;		tgtVector.at(i + 8)++; }
 		if (tgtVector.at(i) > 127) {	tgtVector.at(i) -= 128;		tgtVector.at(i + 7)++; }
-		if (tgtVector.at(i) > 63) {		tgtVector.at(i) -= 64;		tgtVector.at(i + 6)++; }
-		if (tgtVector.at(i) > 31) {		tgtVector.at(i) -= 32;		tgtVector.at(i + 5)++; }
-		if (tgtVector.at(i) > 15) {		tgtVector.at(i) -= 16;		tgtVector.at(i + 4)++; }
-		if (tgtVector.at(i) > 7) {		tgtVector.at(i) -= 8;		tgtVector.at(i + 3)++; }
-		if (tgtVector.at(i) > 3) {		tgtVector.at(i) -= 4;		tgtVector.at(i + 2)++; }
-		if (tgtVector.at(i) > 1) {		tgtVector.at(i) -= 2;		tgtVector.at(i + 1)++; }
+		if (tgtVector.at(i) > 63) {	tgtVector.at(i) -= 64;		tgtVector.at(i + 6)++; }
+		if (tgtVector.at(i) > 31) {	tgtVector.at(i) -= 32;		tgtVector.at(i + 5)++; }
+		if (tgtVector.at(i) > 15) {	tgtVector.at(i) -= 16;		tgtVector.at(i + 4)++; }
+		if (tgtVector.at(i) > 7) {	tgtVector.at(i) -= 8;		tgtVector.at(i + 3)++; }
+		if (tgtVector.at(i) > 3) {	tgtVector.at(i) -= 4;		tgtVector.at(i + 2)++; }
+		if (tgtVector.at(i) > 1) {	tgtVector.at(i) -= 2;		tgtVector.at(i + 1)++; }
 	}
 }
 
